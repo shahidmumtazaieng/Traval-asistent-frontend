@@ -170,11 +170,19 @@ export const SessionView = ({
               onDisconnect={() => {
                 // Send transcript to n8n webhook on disconnect
                 if (messages.length > 0) {
-                  fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || 'YOUR_N8N_WEBHOOK_URL', {
+                  const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || 'YOUR_N8N_WEBHOOK_URL';
+                  console.log('Webhook URL:', webhookUrl);
+                  console.log('Messages to send:', messages.length);
+                  
+                  fetch(webhookUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ transcript: messages }),
-                  }).catch(console.error);
+                  }).then(response => {
+                    console.log('Webhook response:', response.status);
+                  }).catch(error => {
+                    console.error('Webhook error:', error);
+                  });
                 }
               }}
             />
