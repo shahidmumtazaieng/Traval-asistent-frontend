@@ -167,6 +167,16 @@ export const SessionView = ({
               capabilities={capabilities}
               onChatOpenChange={setChatOpen}
               onSendMessage={handleSendMessage}
+              onDisconnect={() => {
+                // Send transcript to n8n webhook on disconnect
+                if (messages.length > 0) {
+                  fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || 'YOUR_N8N_WEBHOOK_URL', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ transcript: messages }),
+                  }).catch(console.error);
+                }
+              }}
             />
           </div>
           {/* skrim */}
