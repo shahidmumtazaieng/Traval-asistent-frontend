@@ -92,7 +92,8 @@ export default function VoiceAssistantPage() {
         console.error('Error connecting to room:', error);
         toastAlert({
           title: 'There was an error connecting to the agent',
-          description: error instanceof Error ? `${error.name}: ${error.message}` : 'Unknown error occurred',
+          description:
+            error instanceof Error ? `${error.name}: ${error.message}` : 'Unknown error occurred',
         });
         // Navigate back to welcome page on connection error
         router.push('/');
