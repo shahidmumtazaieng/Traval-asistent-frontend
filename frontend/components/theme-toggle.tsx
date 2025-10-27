@@ -62,7 +62,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       const storedTheme = (localStorage.getItem(THEME_STORAGE_KEY) as ThemeMode) ?? 'system';
       applyTheme(storedTheme);
     }
-    
+
     const storedTheme = (localStorage.getItem(THEME_STORAGE_KEY) as ThemeMode) ?? 'system';
     setTheme(storedTheme);
   }, []);
@@ -83,7 +83,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
         'bg-white/80 dark:bg-gray-800/80',
         'backdrop-blur-sm',
         'border border-gray-200 dark:border-gray-700',
-        'flex w-full flex-row justify-end divide-x divide-gray-200 dark:divide-gray-700 overflow-hidden rounded-full',
+        'flex w-full flex-row justify-end divide-x divide-gray-200 overflow-hidden rounded-full dark:divide-gray-700',
         className
       )}
     >
@@ -91,7 +91,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       <button
         type="button"
         onClick={() => handleThemeChange('dark')}
-        className="cursor-pointer p-2 pl-3 flex items-center"
+        className="flex cursor-pointer items-center p-2 pl-3"
       >
         <span className="sr-only">Enable dark color scheme</span>
         <Moon size={16} weight="bold" className={cn(theme !== 'dark' && 'opacity-25')} />
@@ -99,7 +99,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       <button
         type="button"
         onClick={() => handleThemeChange('light')}
-        className="cursor-pointer px-3 py-2 flex items-center"
+        className="flex cursor-pointer items-center px-3 py-2"
       >
         <span className="sr-only">Enable light color scheme</span>
         <Sun size={16} weight="bold" className={cn(theme !== 'light' && 'opacity-25')} />
@@ -107,7 +107,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       <button
         type="button"
         onClick={() => handleThemeChange('system')}
-        className="cursor-pointer p-2 pr-3 flex items-center"
+        className="flex cursor-pointer items-center p-2 pr-3"
       >
         <span className="sr-only">Enable system color scheme</span>
         <Monitor size={16} weight="bold" className={cn(theme !== 'system' && 'opacity-25')} />

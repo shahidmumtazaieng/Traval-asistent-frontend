@@ -14,18 +14,18 @@ export const AgentTile = ({
   ref,
 }: React.ComponentProps<'div'> & AgentAudioTileProps) => {
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className={cn(
         'bg-gradient-to-br from-blue-500/20 to-indigo-600/20',
-        'backdrop-blur-sm border border-blue-500/30 rounded-xl',
+        'rounded-xl border border-blue-500/30 backdrop-blur-sm',
         'shadow-lg shadow-blue-500/10',
         'flex items-center justify-center',
         className
       )}
     >
-      <div className="relative w-full h-full flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-indigo-500/10 rounded-xl"></div>
+      <div className="relative flex h-full w-full items-center justify-center">
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-400/10 to-indigo-500/10"></div>
         <BarVisualizer
           barCount={7}
           state={state}
@@ -35,16 +35,16 @@ export const AgentTile = ({
         >
           <span
             className={cn([
-              'bg-blue-400 min-h-6 w-2 rounded-full',
+              'min-h-6 w-2 rounded-full bg-blue-400',
               'origin-center transition-all duration-200 ease-linear',
               'data-[lk-highlighted=true]:bg-blue-300 data-[lk-muted=true]:bg-blue-600/50',
-              'shadow-md shadow-blue-500/30'
+              'shadow-md shadow-blue-500/30',
             ])}
           />
         </BarVisualizer>
         <div className="absolute -top-2 -right-2">
-          <div className="flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full">
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-white"></div>
           </div>
         </div>
       </div>

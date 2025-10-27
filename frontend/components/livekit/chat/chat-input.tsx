@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import { PaperPlaneRight } from '@phosphor-icons/react/dist/ssr';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { PaperPlaneRight } from '@phosphor-icons/react/dist/ssr';
 
 interface ChatInputProps extends React.HTMLAttributes<HTMLFormElement> {
   onSend?: (message: string) => void;
@@ -49,16 +49,16 @@ export function ChatInput({ onSend, className, disabled, ...props }: ChatInputPr
         disabled={disabled}
         placeholder="Type your message..."
         onChange={(e) => setMessage(e.target.value)}
-        className="flex-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 bg-transparent text-sm"
+        className="flex-1 bg-transparent text-sm focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
       />
       <Button
         size="sm"
         type="submit"
         variant={isDisabled ? 'secondary' : 'primary'}
         disabled={isDisabled}
-        className="font-medium rounded-full p-2"
+        className="rounded-full p-2 font-medium"
       >
-        <PaperPlaneRight weight="bold" className="w-4 h-4" />
+        <PaperPlaneRight weight="bold" className="h-4 w-4" />
       </Button>
     </form>
   );

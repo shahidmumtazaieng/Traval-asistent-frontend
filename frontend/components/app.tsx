@@ -4,13 +4,13 @@ import { useEffect, useMemo, useState } from 'react';
 import { Room } from 'livekit-client';
 import { motion } from 'motion/react';
 import { RoomAudioRenderer, RoomContext, StartAudio } from '@livekit/components-react';
+import { Phone } from '@phosphor-icons/react';
 import { toastAlert } from '@/components/alert-toast';
 import { SessionView } from '@/components/session-view';
 import { Toaster } from '@/components/ui/sonner';
 import { Welcome } from '@/components/welcome';
 import useConnectionDetails from '@/hooks/useConnectionDetails';
 import type { AppConfig } from '@/lib/types';
-import { Phone } from '@phosphor-icons/react';
 
 const MotionWelcome = motion.create(Welcome);
 const MotionSessionView = motion.create(SessionView);
@@ -21,7 +21,7 @@ interface AppProps {
 
 export function App({ appConfig }: AppProps) {
   const room = useMemo(() => new Room(), []);
-  
+
   const [sessionStarted, setSessionStarted] = useState(false);
   const { refreshConnectionDetails, existingOrRefreshConnectionDetails } =
     useConnectionDetails(appConfig);
@@ -44,7 +44,7 @@ export function App({ appConfig }: AppProps) {
     room.on('mediaDevicesError', onMediaDevicesError);
     room.on('disconnected', onDisconnected);
     room.on('encryptionError', onEncryptionError);
-    
+
     return () => {
       room.off('disconnected', onDisconnected);
       room.off('mediaDevicesError', onMediaDevicesError);
@@ -100,16 +100,27 @@ export function App({ appConfig }: AppProps) {
         <StartAudio label="Start Audio" />
         {/* Conversation popup overlay */}
         {sessionStarted && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl h-[90vh] overflow-hidden flex flex-col">
-              <div className="p-4 border-b border-gray-200 flex justify-between items-center">
+          <div className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black">
+            <div className="flex h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
+              <div className="flex items-center justify-between border-b border-gray-200 p-4">
                 <h2 className="text-xl font-bold text-gray-800">Conversation</h2>
-                <button 
+                <button
                   onClick={() => setSessionStarted(false)}
                   className="text-gray-500 hover:text-gray-700"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
               </div>
@@ -137,10 +148,10 @@ export function App({ appConfig }: AppProps) {
       {!sessionStarted && (
         <button
           onClick={() => setSessionStarted(true)}
-          className="fixed bottom-8 right-8 bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 z-30 flex items-center justify-center"
+          className="fixed right-8 bottom-8 z-30 flex transform items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 p-4 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
           aria-label="Start call"
         >
-          <Phone className="w-6 h-6" weight="fill" />
+          <Phone className="h-6 w-6" weight="fill" />
         </button>
       )}
 

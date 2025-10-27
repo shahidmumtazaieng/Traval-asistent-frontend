@@ -10,10 +10,10 @@ export const APP_CONFIG_DEFAULTS: AppConfig = {
   supportsScreenShare: true,
   isPreConnectBufferEnabled: true,
 
- 
   accent: '#002cf2',
   logo: 'https://img.freepik.com/premium-vector/travel-agency-logo-vector-white-background_1277164-7693.jpg',
-  logoDark: 'https://img.freepik.com/premium-vector/travel-agency-logo-vector-white-background_1277164-7693.jpg',
+  logoDark:
+    'https://img.freepik.com/premium-vector/travel-agency-logo-vector-white-background_1277164-7693.jpg',
   accentDark: '#1fd5f9',
   startButtonText: 'Start call',
 

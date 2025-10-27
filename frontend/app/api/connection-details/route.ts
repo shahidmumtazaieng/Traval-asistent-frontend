@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   console.log('LIVEKIT_URL:', LIVEKIT_URL);
   console.log('API_KEY defined:', API_KEY !== undefined);
   console.log('API_SECRET defined:', API_SECRET !== undefined);
-  
+
   try {
     if (LIVEKIT_URL === undefined) {
       throw new Error('LIVEKIT_URL is not defined. Please check your environment variables.');
@@ -31,7 +31,9 @@ export async function POST(req: Request) {
       throw new Error('LIVEKIT_API_KEY is not defined. Please check your environment variables.');
     }
     if (API_SECRET === undefined) {
-      throw new Error('LIVEKIT_API_SECRET is not defined. Please check your environment variables.');
+      throw new Error(
+        'LIVEKIT_API_SECRET is not defined. Please check your environment variables.'
+      );
     }
 
     // Parse agent configuration from request body

@@ -11,22 +11,22 @@ export const VideoTile = ({
   ref,
 }: React.ComponentProps<'div'> & React.ComponentProps<typeof VideoTrack>) => {
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className={cn(
         'bg-gradient-to-br from-gray-700/30 to-gray-800/30',
-        'backdrop-blur-sm border border-gray-600/30 rounded-xl',
+        'rounded-xl border border-gray-600/30 backdrop-blur-sm',
         'shadow-lg shadow-gray-900/10',
         'overflow-hidden',
         className
       )}
     >
-      <div className="relative w-full h-full">
+      <div className="relative h-full w-full">
         <MotionVideoTrack
           trackRef={trackRef}
           width={trackRef?.publication.dimensions?.width ?? 0}
           height={trackRef?.publication.dimensions?.height ?? 0}
-          className={cn('w-full h-full object-cover rounded-lg')}
+          className={cn('h-full w-full rounded-lg object-cover')}
         />
         <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/10 to-transparent"></div>
       </div>

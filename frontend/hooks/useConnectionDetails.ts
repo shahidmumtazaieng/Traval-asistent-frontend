@@ -16,7 +16,7 @@ export default function useConnectionDetails(appConfig: AppConfig) {
   // own participant name, and possibly to choose from existing rooms to join.
 
   const [connectionDetails, setConnectionDetails] = useState<ConnectionDetails | null>(null);
-  
+
   // Retry counter to prevent infinite retries
   const retryCountRef = useRef(0);
   const MAX_RETRIES = 3;
@@ -47,27 +47,27 @@ export default function useConnectionDetails(appConfig: AppConfig) {
             : undefined,
         }),
       });
-      
+
       // Check if the response is successful
       if (!res.ok) {
         const errorText = await res.text();
         console.error(`HTTP Error ${res.status}: ${res.statusText}`, errorText);
         throw new Error(`Failed to fetch connection details: ${res.status} ${res.statusText}`);
       }
-      
+
       data = await res.json();
     } catch (error) {
       console.error('Error fetching connection details:', error);
-      
+
       // Implement retry logic
       if (retryCountRef.current < MAX_RETRIES) {
         retryCountRef.current++;
         console.log(`Retrying connection details fetch (${retryCountRef.current}/${MAX_RETRIES})`);
         // Wait 1 second before retrying
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         return fetchConnectionDetails();
       }
-      
+
       if (error instanceof Error) {
         throw new Error(`Error fetching connection details: ${error.message}`);
       } else {

@@ -15,7 +15,7 @@ const toggleVariants = cva(
     'disabled:pointer-events-none disabled:opacity-50 disabled:not-allowed',
     'data-[state=on]:bg-button-selected data-[state=on]:border-button-border-selected',
     "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0",
-    'shadow-sm hover:shadow-md'
+    'shadow-sm hover:shadow-md',
   ],
   {
     variants: {

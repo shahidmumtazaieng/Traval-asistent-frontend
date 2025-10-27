@@ -31,7 +31,7 @@ export function Provider({
         });
       });
     }
-    
+
     const onMediaDevicesError = (error: Error) => {
       toastAlert({
         title: 'Encountered an error with your media devices',
@@ -44,7 +44,7 @@ export function Provider({
     };
     room.on('mediaDevicesError', onMediaDevicesError);
     room.on('encryptionError', onEncryptionError);
-    
+
     return () => {
       room.off('mediaDevicesError', onMediaDevicesError);
       room.off('encryptionError', onEncryptionError);

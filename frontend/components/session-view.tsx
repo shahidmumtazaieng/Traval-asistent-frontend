@@ -99,8 +99,8 @@ export const SessionView = ({
         !chatOpen && 'max-h-svh overflow-hidden'
       )}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 -z-10"></div>
-      
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800"></div>
+
       <ChatMessageView
         className={cn(
           'mx-auto min-h-svh w-full max-w-2xl px-4 pt-32 pb-40 transition-[opacity,translate] duration-300 ease-out md:px-0 md:pt-36 md:pb-48',
@@ -124,7 +124,7 @@ export const SessionView = ({
         </div>
       </ChatMessageView>
 
-      <div className="bg-gradient-to-b from-white/80 to-transparent dark:from-gray-900/80 dark:to-transparent fixed top-0 right-0 left-0 h-32 md:h-36 -z-10">
+      <div className="fixed top-0 right-0 left-0 -z-10 h-32 bg-gradient-to-b from-white/80 to-transparent md:h-36 dark:from-gray-900/80 dark:to-transparent">
         <div className="absolute bottom-0 left-0 h-12 w-full translate-y-full bg-gradient-to-b from-white/50 to-transparent dark:from-gray-900/50"></div>
       </div>
 
@@ -158,7 +158,7 @@ export const SessionView = ({
                   sessionStarted && messages.length === 0 && 'pointer-events-none'
                 )}
               >
-                <p className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-transparent bg-clip-text text-sm font-semibold">
+                <p className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-sm font-semibold text-transparent">
                   Agent is listening, ask it a question
                 </p>
               </motion.div>
@@ -172,7 +172,7 @@ export const SessionView = ({
                 // Send transcript to n8n webhook on disconnect
                 if (messages.length > 0) {
                   const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
-                  
+
                   // Only attempt to send if webhook URL is properly configured
                   if (webhookUrl && webhookUrl !== 'YOUR_N8N_WEBHOOK_URL') {
                     try {
@@ -181,9 +181,13 @@ export const SessionView = ({
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ transcript: messages }),
                       });
-                      
+
                       if (!response.ok) {
-                        console.error('Failed to send transcript to webhook:', response.status, response.statusText);
+                        console.error(
+                          'Failed to send transcript to webhook:',
+                          response.status,
+                          response.statusText
+                        );
                       } else {
                         console.log('Transcript successfully sent to webhook');
                       }
@@ -197,7 +201,7 @@ export const SessionView = ({
               }}
             />
           </div>
-          <div className="bg-gradient-to-t from-white/80 to-transparent dark:from-gray-900/80 dark:to-transparent absolute top-0 left-0 h-12 w-full -translate-y-full"></div>
+          <div className="absolute top-0 left-0 h-12 w-full -translate-y-full bg-gradient-to-t from-white/80 to-transparent dark:from-gray-900/80 dark:to-transparent"></div>
         </motion.div>
       </div>
     </section>

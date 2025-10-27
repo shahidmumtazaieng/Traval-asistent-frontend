@@ -40,8 +40,8 @@ export function TrackToggle({ source, pressed, pending, className, ...props }: T
   const IconComponent = getSourceIcon(source, pressed ?? false, pending);
 
   return (
-    <Toggle 
-      pressed={pressed} 
+    <Toggle
+      pressed={pressed}
       aria-label={`Toggle ${source}`}
       className={cn(
         'relative',
@@ -49,17 +49,14 @@ export function TrackToggle({ source, pressed, pending, className, ...props }: T
         'backdrop-blur-sm',
         'border border-gray-200 dark:border-gray-700',
         'shadow-sm shadow-gray-200/50 dark:shadow-gray-900/50',
-        'hover:shadow-md transition-shadow',
+        'transition-shadow hover:shadow-md',
         'data-[state=on]:bg-blue-500 data-[state=on]:text-white',
         'data-[state=on]:border-blue-600',
         className
-      )} 
+      )}
       {...props}
     >
-      <IconComponent weight="bold" className={cn(
-        'w-5 h-5',
-        pending && 'animate-spin'
-      )} />
+      <IconComponent weight="bold" className={cn('h-5 w-5', pending && 'animate-spin')} />
       {props.children}
     </Toggle>
   );

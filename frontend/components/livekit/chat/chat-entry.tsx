@@ -35,20 +35,22 @@ export const ChatEntry = ({
       {...props}
     >
       {(!hideTimestamp || !hideName || hasBeenEdited) && (
-        <div className="flex items-center justify-between w-full">
+        <div className="flex w-full items-center justify-between">
           {!hideName && (
-            <strong className={cn(
-              'text-xs font-semibold px-2 py-1 rounded-full',
-              isUser 
-                ? 'bg-blue-500/20 text-blue-600 dark:text-blue-300' 
-                : 'bg-indigo-500/20 text-indigo-600 dark:text-indigo-300'
-            )}>
+            <strong
+              className={cn(
+                'rounded-full px-2 py-1 text-xs font-semibold',
+                isUser
+                  ? 'bg-blue-500/20 text-blue-600 dark:text-blue-300'
+                  : 'bg-indigo-500/20 text-indigo-600 dark:text-indigo-300'
+              )}
+            >
               {name}
             </strong>
           )}
 
           {!hideTimestamp && (
-            <span className="text-xs text-gray-500 dark:text-gray-400 font-mono ml-2">
+            <span className="ml-2 font-mono text-xs text-gray-500 dark:text-gray-400">
               {hasBeenEdited && '*'}
               {time.toLocaleTimeString(locale, { timeStyle: 'short' })}
             </span>
@@ -56,13 +58,15 @@ export const ChatEntry = ({
         </div>
       )}
 
-      <div className={cn(
-        'max-w-[85%] rounded-2xl px-4 py-2 text-sm',
-        'shadow-sm',
-        isUser 
-          ? 'bg-blue-500 text-white rounded-tr-none ml-auto' 
-          : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-tl-none mr-auto'
-      )}>
+      <div
+        className={cn(
+          'max-w-[85%] rounded-2xl px-4 py-2 text-sm',
+          'shadow-sm',
+          isUser
+            ? 'ml-auto rounded-tr-none bg-blue-500 text-white'
+            : 'mr-auto rounded-tl-none bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'
+        )}
+      >
         {message}
       </div>
     </li>

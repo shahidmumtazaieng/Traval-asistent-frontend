@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useCallback } from 'react';
 import { Track } from 'livekit-client';
 import { BarVisualizer, useRemoteParticipants } from '@livekit/components-react';
-import { ChatText, PhoneDisconnect, Phone } from '@phosphor-icons/react/dist/ssr';
+import { ChatText, Phone, PhoneDisconnect } from '@phosphor-icons/react/dist/ssr';
 import { ChatInput } from '@/components/livekit/chat/chat-input';
 import { Button } from '@/components/ui/button';
 import { Toggle } from '@/components/ui/toggle';
@@ -111,14 +111,14 @@ export function AgentControlBar({
         <div
           inert={!chatOpen}
           className={cn(
-            'overflow-hidden transition-all duration-300 ease-out mb-4',
+            'mb-4 overflow-hidden transition-all duration-300 ease-out',
             chatOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
           )}
         >
           <div className="flex h-12 w-full">
             <ChatInput onSend={handleSendMessage} disabled={isInputDisabled} className="w-full" />
           </div>
-          <div className="border-t border-gray-200 dark:border-gray-700 my-3"></div>
+          <div className="my-3 border-t border-gray-200 dark:border-gray-700"></div>
         </div>
       )}
 
@@ -143,13 +143,13 @@ export function AgentControlBar({
                   <span
                     className={cn([
                       'h-full w-1 origin-center rounded-full',
-                      'group-data-[state=on]/track:bg-white group-data-[state=off]/track:bg-red-500',
+                      'group-data-[state=off]/track:bg-red-500 group-data-[state=on]/track:bg-white',
                       'data-lk-muted:bg-gray-400',
                     ])}
                   ></span>
                 </BarVisualizer>
               </TrackToggle>
-              <div className="bg-gray-200 dark:bg-gray-700 peer-data-[state=off]/track:bg-red-500 relative z-10 -mr-px hidden h-6 w-px md:block"></div>
+              <div className="relative z-10 -mr-px hidden h-6 w-px bg-gray-200 peer-data-[state=off]/track:bg-red-500 md:block dark:bg-gray-700"></div>
               <DeviceSelect
                 size="sm"
                 kind="audioinput"
@@ -178,7 +178,7 @@ export function AgentControlBar({
                 onPressedChange={cameraToggle.toggle}
                 className="peer/track relative w-auto rounded-r-none pr-4 pl-4 disabled:opacity-100 md:border-r-0 md:pr-3"
               />
-              <div className="bg-gray-200 dark:bg-gray-700 peer-data-[state=off]/track:bg-red-500 relative z-10 -mr-px hidden h-6 w-px md:block"></div>
+              <div className="relative z-10 -mr-px hidden h-6 w-px bg-gray-200 peer-data-[state=off]/track:bg-red-500 md:block dark:bg-gray-700"></div>
               <DeviceSelect
                 size="sm"
                 kind="videoinput"
@@ -218,7 +218,7 @@ export function AgentControlBar({
               disabled={!isAgentAvailable}
               className="aspect-square h-full rounded-full"
             >
-              <ChatText weight="bold" className="w-5 h-5" />
+              <ChatText weight="bold" className="h-5 w-5" />
             </Toggle>
           )}
         </div>
@@ -227,9 +227,9 @@ export function AgentControlBar({
             variant="destructive"
             onClick={onLeave}
             disabled={isDisconnecting}
-            className="font-medium rounded-full px-4 py-2 flex items-center gap-2"
+            className="flex items-center gap-2 rounded-full px-4 py-2 font-medium"
           >
-            <PhoneDisconnect weight="bold" className="w-5 h-5" />
+            <PhoneDisconnect weight="bold" className="h-5 w-5" />
             <span className="hidden md:inline">END CALL</span>
             <span className="inline md:hidden">END</span>
           </Button>

@@ -11,7 +11,7 @@ const buttonVariants = cva(
     'disabled:pointer-events-none disabled:opacity-50',
     'aria-invalid:ring-destructive/20 aria-invalid:border-destructive dark:aria-invalid:ring-destructive/40 ',
     "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0",
-    'shadow-sm hover:shadow-md'
+    'shadow-sm hover:shadow-md',
   ],
   {
     variants: {
@@ -21,7 +21,7 @@ const buttonVariants = cva(
           'bg-destructive text-destructive-foreground',
           'hover:bg-destructive-hover focus:bg-destructive-hover focus-visible:ring-destructive-foreground/20',
           'dark:focus-visible:ring-destructive-foreground/40',
-          'shadow-sm shadow-red-500/20 hover:shadow-md hover:shadow-red-500/30'
+          'shadow-sm shadow-red-500/20 hover:shadow-md hover:shadow-red-500/30',
         ],
         outline: [
           'border bg-background',
@@ -32,15 +32,15 @@ const buttonVariants = cva(
           'bg-gradient-to-r from-blue-500 to-indigo-600 text-white',
           'hover:from-blue-600 hover:to-indigo-700',
           'focus:from-blue-600 focus:to-indigo-700',
-          'shadow-sm shadow-blue-500/20 hover:shadow-md hover:shadow-blue-500/30'
+          'shadow-sm shadow-blue-500/20 hover:shadow-md hover:shadow-blue-500/30',
         ],
         secondary: [
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-          'shadow-sm shadow-gray-500/10 hover:shadow-md hover:shadow-gray-500/20'
+          'shadow-sm shadow-gray-500/10 hover:shadow-md hover:shadow-gray-500/20',
         ],
         ghost: [
           'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
-          'shadow-none hover:shadow-sm'
+          'shadow-none hover:shadow-sm',
         ],
         link: 'text-primary underline-offset-4 hover:underline',
       },

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Track } from 'livekit-client';
 import { AnimatePresence, motion } from 'motion/react';
-import type { Transition, TargetAndTransition } from 'motion/react';
+import type { TargetAndTransition, Transition } from 'motion/react';
 import {
   type TrackReference,
   useLocalParticipant,
@@ -111,19 +111,19 @@ export function MediaTiles({ chatOpen }: MediaTilesProps) {
     mass: 1,
     delay: chatOpen ? 0 : 0.15, // delay on close
   };
-  
+
   const agentAnimate: TargetAndTransition = {
     opacity: 1,
     scale: chatOpen ? 1 : 3,
     transition: transition,
   };
-  
+
   const avatarAnimate: TargetAndTransition = {
     opacity: 1,
     scale: 1,
     transition: transition,
   };
-  
+
   const agentLayoutTransition: Transition = transition;
   const avatarLayoutTransition: Transition = transition;
 
@@ -156,8 +156,8 @@ export function MediaTiles({ chatOpen }: MediaTilesProps) {
                   state={agentState}
                   audioTrack={agentAudioTrack}
                   className={cn(
-                    chatOpen 
-                      ? 'h-[100px] w-[100px] rounded-xl' 
+                    chatOpen
+                      ? 'h-[100px] w-[100px] rounded-xl'
                       : 'h-auto w-full max-w-md rounded-2xl'
                   )}
                 />
@@ -173,13 +173,12 @@ export function MediaTiles({ chatOpen }: MediaTilesProps) {
                   transition={avatarLayoutTransition}
                   videoTrack={agentVideoTrack}
                   className={cn(
-                    chatOpen 
-                      ? 'h-[100px] w-[100px] [&>video]:h-[100px] [&>video]:w-auto rounded-xl' 
+                    chatOpen
+                      ? 'h-[100px] w-[100px] rounded-xl [&>video]:h-[100px] [&>video]:w-auto'
                       : 'h-auto w-full max-w-md rounded-2xl'
                   )}
                 />
               )}
-
             </AnimatePresence>
           </div>
 
@@ -227,7 +226,6 @@ export function MediaTiles({ chatOpen }: MediaTilesProps) {
                   className="h-[100px] w-[100px] rounded-xl"
                 />
               )}
-
             </AnimatePresence>
           </div>
         </div>

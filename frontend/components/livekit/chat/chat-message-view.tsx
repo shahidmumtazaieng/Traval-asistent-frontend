@@ -34,8 +34,8 @@ export const ChatMessageView = ({ className, children, ...props }: ChatProps) =>
   useAutoScroll(scrollContentRef);
 
   return (
-    <div 
-      ref={scrollContentRef} 
+    <div
+      ref={scrollContentRef}
       className={cn(
         'flex flex-col justify-end',
         'bg-white/50 dark:bg-gray-900/50',
@@ -44,12 +44,10 @@ export const ChatMessageView = ({ className, children, ...props }: ChatProps) =>
         'rounded-2xl p-4',
         'shadow-sm shadow-gray-200/50 dark:shadow-gray-900/50',
         className
-      )} 
+      )}
       {...props}
     >
-      <div className="space-y-4">
-        {children}
-      </div>
+      <div className="space-y-4">{children}</div>
     </div>
   );
 };

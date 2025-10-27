@@ -4,6 +4,7 @@ import { useLayoutEffect, useState } from 'react';
 import { cva } from 'class-variance-authority';
 import { LocalAudioTrack, LocalVideoTrack } from 'livekit-client';
 import { useMaybeRoomContext, useMediaDeviceSelect } from '@livekit/components-react';
+import { CaretUpDown } from '@phosphor-icons/react/dist/ssr';
 import {
   Select,
   SelectContent,
@@ -12,7 +13,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
-import { CaretUpDown } from '@phosphor-icons/react/dist/ssr';
 
 type DeviceSelectProps = React.ComponentProps<typeof SelectTrigger> & {
   kind: MediaDeviceKind;
@@ -90,19 +90,22 @@ export function DeviceSelect({
       <SelectTrigger className={cn(selectVariants({ size }), props.className)}>
         <div className="flex items-center gap-2">
           {size !== 'sm' && (
-            <SelectValue className="font-medium text-sm truncate" placeholder={`Select a ${kind}`} />
+            <SelectValue
+              className="truncate text-sm font-medium"
+              placeholder={`Select a ${kind}`}
+            />
           )}
-          <CaretUpDown weight="bold" className="w-4 h-4 text-gray-500" />
+          <CaretUpDown weight="bold" className="h-4 w-4 text-gray-500" />
         </div>
       </SelectTrigger>
-      <SelectContent className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg">
+      <SelectContent className="rounded-xl border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-900">
         {devices
           .filter((d) => d.deviceId !== '')
           .map((device) => (
-            <SelectItem 
-              key={device.deviceId} 
-              value={device.deviceId} 
-              className="font-medium text-sm px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
+            <SelectItem
+              key={device.deviceId}
+              value={device.deviceId}
+              className="cursor-pointer rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
             >
               {device.label}
             </SelectItem>

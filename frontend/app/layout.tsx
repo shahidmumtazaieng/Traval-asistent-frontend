@@ -69,7 +69,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       </head>
       {/* Added suppressHydrationWarning to body to prevent issues with browser extensions */}
       <body
-        className={`${publicSans.variable} ${commitMono.variable} overflow-x-hidden antialiased bg-gray-50 dark:bg-gray-900`}
+        className={`${publicSans.variable} ${commitMono.variable} overflow-x-hidden bg-gray-50 antialiased dark:bg-gray-900`}
         suppressHydrationWarning
       >
         {children}

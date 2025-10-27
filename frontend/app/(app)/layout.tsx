@@ -23,7 +23,6 @@ export default async function AppLayout({ children }: AppLayoutProps) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={logoDark} alt={`${companyName} Logo`} className="hidden size-6 dark:block" />
         </a>
-     
       </header>
       {children}
     </>
