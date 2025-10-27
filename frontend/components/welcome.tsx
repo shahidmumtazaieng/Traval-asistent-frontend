@@ -170,7 +170,7 @@ export const Welcome = ({
 
                     <div className="ml-12 rounded-xl rounded-tl-none bg-gradient-to-r from-blue-600 to-indigo-600 p-4 text-white">
                       <p className="text-sm">
-                        Hello! I'm your travel assistant. How can I help plan your next trip?
+                        Hello! I&#39;m your travel assistant. How can I help plan your next trip?
                       </p>
                     </div>
 
